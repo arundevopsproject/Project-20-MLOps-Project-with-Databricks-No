@@ -77,7 +77,7 @@ The project has been structured with the following folders and files:
 
 ## Project Set Up
 
-The Python version used for this project is Python 3.10.
+The Python version used for this project is Python 3.11.
 
 1. Clone the repo:
 
