@@ -97,4 +97,11 @@ The Python version used for this project is Python 3.10.
     uv lock
     ```
 
-3. Follow the code along the [Medium](https://medium.com/@benitomartin/8cd9a85cc3c0) publication or use it as supporting material if you enroll in the course. The blog does not contain an explanation of all files. Just the main ones used for the final deployment, but you can test out other files as well 🙂.
+3. Authenticate on Databricks:
+
+   ```bash
+   databricks auth login --configure-cluster --host <workspace-url>
+   ```
+
+
+4. Follow the code along the [Medium](https://medium.com/@benitomartin/8cd9a85cc3c0) publication or use it as supporting material if you enroll in the course. The blog does not contain an explanation of all files. Just the main ones used for the final deployment, but you can test out other files as well 🙂.
