@@ -36,5 +36,5 @@ jobs:
 
       - name: Deploy to Databricks
         env:
-          DATABRICKS_BUNDLE_ENV: prod # bundle target
+          DATABRICKS_BUNDLE_ENV: dev # bundle target
         run: databricks bundle deploy --var="git_sha=${{ github.sha }}"
