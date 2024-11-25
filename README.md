@@ -28,9 +28,6 @@ Feel free to ⭐ and clone this repo 😉
 
 ## Project Structure
 
-
-## Repository Structure
-
 The project has been structured with the following folders and files:
 
 - `.github/workflows`: CI/CD configuration files
