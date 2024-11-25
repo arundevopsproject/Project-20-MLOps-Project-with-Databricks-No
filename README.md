@@ -27,3 +27,74 @@ Feel free to ⭐ and clone this repo 😉
 ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
 
 ## Project Structure
+
+
+## Repository Structure
+
+The project has been structured with the following folders and files:
+
+- `.github/workflows`: CI/CD configuration files
+  - `cd.yml`
+  - `ci.yml`
+- `data`: raw data
+  - `data.csv`
+- `notebooks`: notebooks for various stages of the project
+  - `create_source_data`: notebook for generating synthetic data
+    - `create_source_data_notebook.py`
+  - `feature_engineering`: feature engineering and MLflow experiments
+    - `basic_mlflow_experiment_notebook.py`
+    - `combined_mlflow_experiment_notebook.py`
+    - `custom_mlflow_experiment_notebook.py`
+    - `prepare_data_notebook.py`
+  - `model_feature_serving`: notebooks for serving models and features
+    - `AB_test_model_serving_notebbok.py`
+    - `feature_serving_notebook.py`
+    - `model_serving_feat_lookup_notebook.py`
+    - `model_serving_notebook.py`
+  - `monitoring`: monitoring and alerts setup
+    - `create_alert.py`
+    - `create_inference_data.py`
+    - `lakehouse_monitoring.py`
+    - `send_request_to_endpoint.py`
+- `src`: source code for the project
+  - `credit_default`
+    - `data_cleaning.py`
+    - `data_cleaning_spark.py`
+    - `data_preprocessing.py`
+    - `data_preprocessing_spark.py`
+    - `utils.py`
+- `tests`: unit tests for the project
+  - `test_data_cleaning.py`
+  - `test_data_preprocessor.py`
+- `workflows`: workflows for Databricks asset bundle
+  - `deploy_model.py`
+  - `evaluate_model.py`
+  - `preprocess.py`
+  - `refresh_monitor.py`
+  - `train_model.py`
+- `.pre-commit-config.yaml`: configuration for pre-commit hooks
+- `Makefile`: helper commands for installing requirements, formatting, testing, linting, and cleaning
+- `project_config.yml`: configuration settings for the project
+- `databricks.yml`: Databricks asset bundle configuration
+- `bundle_monitoring.yml`: monitoring settings for Databricks asset bundle
+
+## Project Set Up
+
+The Python version used for this project is Python 3.10.
+
+1. Clone the repo:
+
+   ```bash
+   git clone https://github.com/benitomartin/mlops-databricks-credit-default.git
+   ```
+
+2. Create the virtual environment using `uv` with Python version 3.11 and install the requirements:
+
+   ```bash
+    uv venv -p 3.11.0 .venv
+    source .venv/bin/activate
+    uv pip install -r pyproject.toml --all-extras
+    uv lock
+    ```
+
+3. Follow the code along the [Medium](https://medium.com/@benitomartin/8cd9a85cc3c0) publication or use it as supporting material if you enroll in the course. The blog does not contain an explanation of all files. Just the main ones used for the final deployment, but you can test out other files as well 🙂.
