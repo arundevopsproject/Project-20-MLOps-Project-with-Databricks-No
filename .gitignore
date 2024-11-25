@@ -105,6 +105,6 @@ notebooks/test_scripts/
 notebooks/exploration/
 see_tables.py
 notebooks/monitoring/refresh_monitor_notebook.py
-src/credit_default/data_cleaning.py
-src/credit_default/data_preprocessing.py
+# src/credit_default/data_cleaning.py
+# src/credit_default/data_preprocessing.py
 src/credit_default/model_training.py
