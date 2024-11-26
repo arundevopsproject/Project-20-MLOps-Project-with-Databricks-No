@@ -123,11 +123,11 @@ After entering your information, the CLI will prompt you to save it under a Data
 
 ## Catalog Set Up
 
-Once the project is set up, you need to create the volumes to store the data and the wheel package that will be installed in the cluster:
+Once the project is set up, you need to create the volumes to store the data and the wheel package that will you have to install in the cluster:
 
-- catalog name: credit
-- schema_name: default
-- volume name: data and packages
+- catalog name: *credit*
+- schema_name: *default*
+- volume name: *data* and *packages*
 
   ```bash
   # Create volumes
@@ -145,7 +145,7 @@ Once the project is set up, you need to create the volumes to store the data and
 
 ### Token Creation
 
-Some of the files requires a token to run. First create a token in the Databricks UI under Settings --> User --> Developer. The save the token in a secret scope locally:
+Some of the files requires a token to run. First create a token in the Databricks UI under Settings --> User --> Developer. Then save the token in a secret scope locally:
 
   ```bash
   # Create Scope
@@ -157,5 +157,7 @@ Some of the files requires a token to run. First create a token in the Databrick
   # List secrets
   databricks secrets list-secrets secret-scope
   ```
+
+Additionally, to run the `cd.yml` file, the token must be added to the repository as a GitHub Secret.
 
 Now you can follow the code along the [Medium](https://medium.com/@benitomartin/8cd9a85cc3c0) publication or use it as supporting material if you enroll in the [course](https://maven.com/marvelousmlops/mlops-with-databricks). The blog does not contain an explanation of all files. Just the main ones used for the final deployment, but you can test out other files as well 🙂.
