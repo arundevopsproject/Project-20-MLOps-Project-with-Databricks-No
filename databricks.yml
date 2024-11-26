@@ -7,6 +7,7 @@ bundle:
   name: mlops-databricks-credit-default
 
 ## Required for production bundles
+## As an alternative remove "mode: production" below in the targets and set default or add the flag "-t prod* 
 # run_as:
 #   user_name: "service_principal_email"
 
