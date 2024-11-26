@@ -148,7 +148,7 @@ targets:
       host: https://dbc-46617658-3f2b.cloud.databricks.com
 
   prod:
-    mode: production
+    mode: production # Comment out this line when deploying to production, so that "run_as" above is not required
     default: false
     workspace:
       host: https://dbc-46617658-3f2b.cloud.databricks.com
