@@ -6,7 +6,7 @@
 
 This is a personal MLOps project based on a [Kaggle](https://www.kaggle.com/datasets/uciml/default-of-credit-card-clients-dataset/data) dataset for credit default predictions.
 
-It was developed as part of the this [End-to-end MLOps with Databricks](https://www.kaggle.com/datasets/uciml/default-of-credit-card-clients-dataset/data) course and you can walk through it together with this [Medium](https://medium.com/@benitomartin/8cd9a85cc3c0) publication.
+It was developed as part of the this [End-to-end MLOps with Databricks](https://maven.com/marvelousmlops/mlops-with-databricks) course and you can walk through it together with this [Medium](https://medium.com/@benitomartin/8cd9a85cc3c0) publication.
 
 Feel free to ⭐ and clone this repo 😉
 
@@ -94,11 +94,68 @@ The Python version used for this project is Python 3.11.
     uv lock
     ```
 
-3. Authenticate on Databricks:
+3. Build the wheel package:
+
+    ```bash
+    # Build
+    uv build
+    ```
+
+4. Install the Databricks extension for VS Code and Databricks CLI:
 
    ```bash
-   databricks auth login --configure-cluster --host <workspace-url>
+   curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
    ```
 
+5. Authenticate on Databricks:
 
-4. Follow the code along the [Medium](https://medium.com/@benitomartin/8cd9a85cc3c0) publication or use it as supporting material if you enroll in the course. The blog does not contain an explanation of all files. Just the main ones used for the final deployment, but you can test out other files as well 🙂.
+   ```bash
+   # Authentication
+   databricks auth login --configure-cluster --host <workspace-url>
+  
+   # Profiles
+   databricks auth profiles
+   cat ~/.databrickscfg
+   ```
+
+After entering your information, the CLI will prompt you to save it under a Databricks configuration profile `~/.databrickscfg`
+
+
+## Catalog Set Up
+
+Once the project is set up, you need to create the volumes to store the data and the wheel package that will be installed in the cluster:
+
+- catalog name: credit
+- schema_name: default
+- volume name: data and packages
+
+  ```bash
+  # Create volumes
+  databricks volumes create credit default data MANAGED
+  databricks volumes create credit default packages MANAGED
+  
+  # Push volumes
+  databricks fs cp data/data.csv dbfs:/Volumes/credit/default/data/data.csv
+  databricks fs cp dist/credit_default_databricks-0.0.1-py3-none-any.whl dbfs:/Volumes/credit/default/packages
+  
+  # Show volumes
+  databricks fs ls dbfs:/Volumes/credit/default/data
+  databricks fs ls dbfs:/Volumes/credit/default/packages
+  ```
+
+### Token Creation
+
+Some of the files requires a token to run. First create a token in the Databricks UI under Settings --> User --> Developer. The save the token in a secret scope locally:
+
+  ```bash
+  # Create Scope
+  databricks secrets create-scope secret-scope
+  
+  # Add secret after running command
+  databricks secrets put-secret secret-scope databricks-token
+  
+  # List secrets
+  databricks secrets list-secrets secret-scope
+  ```
+
+Now you can follow the code along the [Medium](https://medium.com/@benitomartin/8cd9a85cc3c0) publication or use it as supporting material if you enroll in the [course](https://maven.com/marvelousmlops/mlops-with-databricks). The blog does not contain an explanation of all files. Just the main ones used for the final deployment, but you can test out other files as well 🙂.
