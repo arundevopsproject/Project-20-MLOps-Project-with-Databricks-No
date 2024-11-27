@@ -139,6 +139,5 @@ try:
 
 except Exception as e:
     logger.error(f"An error occurred: {e}")
-    # Optionally, propagate the exception or handle it gracefully
     dbutils.jobs.taskValues.set(key="model_update", value=0)  # noqa: F821
     raise
