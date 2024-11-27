@@ -47,16 +47,16 @@ resources:
         pause_status: ${var.schedule_pause_status}
       tags:
         project_name: "credit-default"
-      # job_clusters:
-      #   - job_cluster_key: "credit-default-cluster"
-      #     new_cluster:
-      #       spark_version: "15.4.x-scala2.12"
-      #       data_security_mode: "SINGLE_USER"
-      #       node_type_id: "i3.xlarge"
-      #       driver_node_type_id: "i3.xlarge"
-      #       autoscale:
-      #         min_workers: 1
-      #         max_workers: 1
+      job_clusters:
+        - job_cluster_key: "credit-default-cluster"
+          new_cluster:
+            spark_version: "15.4.x-scala2.12"
+            data_security_mode: "SINGLE_USER"
+            node_type_id: "i3.xlarge"
+            driver_node_type_id: "i3.xlarge"
+            autoscale:
+              min_workers: 1
+              max_workers: 1
 
       tasks:
 
@@ -83,7 +83,7 @@ resources:
           depends_on:
             - task_key: "if_refreshed"
               outcome: "true"
-          # job_cluster_key: "credit-default-cluster"
+          job_cluster_key: "credit-default-cluster"
           existing_cluster_id: 1109-205408-dob4qyuc
           spark_python_task:
             python_file: "workflows/train_model.py"
@@ -100,7 +100,7 @@ resources:
         - task_key: "evaluate_model"
           depends_on:
             - task_key: "train_model"
-          # job_cluster_key: "credit-default-cluster"
+          job_cluster_key: "credit-default-cluster"
           existing_cluster_id: 1109-205408-dob4qyuc
           spark_python_task:
             python_file: "workflows/evaluate_model.py"
@@ -144,11 +144,13 @@ targets:
   dev: # AWS West Region workspace
     mode: development
     default: true
+    cluster_id: 1109-205408-dob4qyuc
     workspace:
       host: https://dbc-46617658-3f2b.cloud.databricks.com
 
   prod:
     mode: production # Comment out this line when deploying to production, so that "run_as" above is not required
     default: false
+    cluster_id: 1109-205408-dob4qyuc
     workspace:
       host: https://dbc-46617658-3f2b.cloud.databricks.com
