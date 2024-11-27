@@ -151,6 +151,5 @@ targets:
   prod:
     mode: production # Comment out this line when deploying to production, so that "run_as" above is not required
     default: false
-    cluster_id: 1109-205408-dob4qyuc
     workspace:
       host: https://dbc-46617658-3f2b.cloud.databricks.com
