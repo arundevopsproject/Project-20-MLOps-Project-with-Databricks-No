@@ -21,7 +21,7 @@ def real_data():
 @pytest.fixture
 def config():
     """Load configuration from the YAML file for testing."""
-    return load_config("../project_config.yml")
+    return load_config("project_config.yml")
 
 
 def test_load_data(real_data, config):
