@@ -19,7 +19,6 @@ spark = DatabricksSession.builder.getOrCreate()
 
 FILEPATH_DATABRICKS = os.environ["FILEPATH_DATABRICKS"]
 CLEANING_LOGS = os.environ["CLEANING_LOGS"]
-CONFIG_DATABRICKS = os.environ["CONFIG_DATABRICKS"]
 
 
 class DataCleaning:
@@ -179,8 +178,8 @@ class DataCleaning:
 
 #     try:
 #         # Load configuration
-#         config = load_config(CONFIG_DATABRICKS)  # Returns Config instance
-#         logger.info(f"Loaded configuration from {CONFIG_DATABRICKS}")
+#         config = load_config("../../project_config.yml")  # Returns Config instance
+#         logger.info(f"Loaded configuration from ../../project_config.yml")
 
 #         # Create and run data cleaner
 #         data_cleaner = DataCleaning(FILEPATH_DATABRICKS, config, spark)

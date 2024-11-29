@@ -14,7 +14,6 @@ load_dotenv()
 
 FILEPATH = os.environ["FILEPATH"]
 PREPROCESSING_LOGS = os.environ["PREPROCESSING_LOGS"]
-CONFIG = os.environ["CONFIG"]
 
 
 class DataPreprocessor:
@@ -95,7 +94,7 @@ if __name__ == "__main__":
     setup_logging(PREPROCESSING_LOGS)  # Set up logging with the log file path
 
     # Load configuration from YAML file
-    config = load_config(CONFIG)  # Returns Config instance
+    config = load_config("../../project_config.yml")  # Returns Config instance
 
     # Test the DataPreprocessor class
     try:

@@ -1,6 +1,5 @@
 # Databricks notebook source
 import json
-import os
 
 import mlflow
 import pandas as pd
@@ -37,13 +36,13 @@ def setup_environment():
     # spark = SparkSession.builder.getOrCreate()
     spark = DatabricksSession.builder.getOrCreate()
 
-    CONFIG_DATABRICKS = os.environ["CONFIG_DATABRICKS"]
+    config_path = "../../project_config.yml"
 
     # Set up MLflow
     mlflow.set_tracking_uri("databricks")
     mlflow.set_registry_uri("databricks-uc")
 
-    return spark, CONFIG_DATABRICKS
+    return spark, config_path
 
 
 def load_data(spark, catalog_name, schema_name):

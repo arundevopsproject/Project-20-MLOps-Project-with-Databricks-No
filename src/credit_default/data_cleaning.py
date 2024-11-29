@@ -13,7 +13,6 @@ load_dotenv()
 
 FILEPATH = os.environ["FILEPATH"]
 CLEANING_LOGS = os.environ["CLEANING_LOGS"]
-CONFIG = os.environ["CONFIG"]
 
 
 class DataCleaning:
@@ -181,8 +180,8 @@ if __name__ == "__main__":
 
     try:
         # Load configuration
-        config = load_config(CONFIG)  # Returns Config instance
-        logger.info(f"Loaded configuration from {CONFIG}")
+        config = load_config("../../project_config.yml")  # Returns Config instance
+        logger.info("Loaded configuration from ../../project_config.yml")
 
         # Create and run data cleaner
         data_cleaner = DataCleaning(FILEPATH, config)

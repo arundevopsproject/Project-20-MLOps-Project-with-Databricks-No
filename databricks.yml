@@ -7,7 +7,7 @@ bundle:
   name: mlops-databricks-credit-default
 
 ## Required for production bundles
-## As an alternative remove "mode: production" below in the targets and set default or add the flag "-t prod* 
+## As an alternative remove "mode: production" below in the targets and set default or add the flag "-t prod*
 # run_as:
 #   user_name: "service_principal_email"
 
@@ -151,6 +151,5 @@ targets:
   prod:
     mode: production # Comment out this line when deploying to production, so that "run_as" above is not required
     default: false
-    cluster_id: 1109-205408-dob4qyuc
     workspace:
       host: https://dbc-46617658-3f2b.cloud.databricks.com

@@ -17,9 +17,8 @@ load_dotenv()
 
 
 # COMMAND ----------
-CONFIG_DATABRICKS = os.environ["CONFIG_DATABRICKS"]
 # Load configuration from YAML file
-config = load_config(CONFIG_DATABRICKS)
+config = load_config("../../project_config.yml")
 
 print(config.catalog_name)
 print(config.schema_name)
@@ -29,9 +28,6 @@ print(config.schema_name)
 # FILEPATH_DATABRICKS = os.environ["FILEPATH_DATABRICKS"]
 FILEPATH_DATABRICKS = f"dbfs:/Volumes/{config.catalog_name}/{config.schema_name}/data/data.csv"
 PREPROCESSING_LOGS = os.environ["PREPROCESSING_LOGS"]
-# CONFIG = os.environ["CONFIG"]
-CONFIG_DATABRICKS = os.environ["CONFIG_DATABRICKS"]
-print(CONFIG_DATABRICKS)
 print(FILEPATH_DATABRICKS)
 
 # COMMAND ----------

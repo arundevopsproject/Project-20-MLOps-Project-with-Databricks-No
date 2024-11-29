@@ -22,7 +22,6 @@ spark = DatabricksSession.builder.getOrCreate()
 
 FILEPATH_DATABRICKS = os.environ["FILEPATH_DATABRICKS"]
 PREPROCESSING_LOGS = os.environ["PREPROCESSING_LOGS"]
-CONFIG_DATABRICKS = os.environ["CONFIG_DATABRICKS"]
 
 
 class DataPreprocessor:
@@ -142,7 +141,7 @@ class DataPreprocessor:
 #     setup_logging(PREPROCESSING_LOGS)  # Set up logging with the log file path
 
 #     # Load configuration from YAML file
-#     config = load_config(CONFIG_DATABRICKS)  # Returns Config instance
+#     config = load_config("../../project_config.yml")  # Returns Config instance
 
 #     # Test the DataPreprocessor class
 #     try:

@@ -1,6 +1,5 @@
 # Databricks notebook source
 import json
-import os
 
 import mlflow
 from databricks.connect import DatabricksSession
@@ -22,9 +21,6 @@ spark = DatabricksSession.builder.getOrCreate()
 # Load environment variables
 load_dotenv()
 
-CONFIG_DATABRICKS = os.environ["CONFIG_DATABRICKS"]
-print(CONFIG_DATABRICKS)
-
 
 # COMMAND ----------
 
@@ -35,7 +31,7 @@ mlflow.set_registry_uri("databricks-uc")
 # COMMAND ----------
 
 # Load configuration from YAML file
-config = load_config(CONFIG_DATABRICKS)
+config = load_config("../../project_config.yml")
 catalog_name = config.catalog_name
 schema_name = config.schema_name
 parameters = config.parameters
