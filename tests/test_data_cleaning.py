@@ -10,7 +10,6 @@ from src.credit_default.utils import load_config
 # Load environment variables
 load_dotenv()
 FILEPATH = os.environ["FILEPATH"]
-CONFIG_PATH = os.environ["CONFIG"]
 
 
 @pytest.fixture
@@ -22,7 +21,7 @@ def real_data():
 @pytest.fixture
 def config():
     """Load configuration from the YAML file for testing."""
-    return load_config(CONFIG_PATH)
+    return load_config("../project_config.yml")
 
 
 def test_load_data(real_data, config):

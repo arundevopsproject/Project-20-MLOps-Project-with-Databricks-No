@@ -11,13 +11,11 @@ from src.credit_default.utils import load_config
 # Load environment variables
 load_dotenv()
 FILEPATH = os.environ["FILEPATH"]
-CONFIG = os.environ["CONFIG"]
-
 
 @pytest.fixture
 def config():
     """Load configuration from the YAML file for testing."""
-    return load_config(CONFIG)
+    return load_config("../project_config.yml")
 
 
 @pytest.fixture
